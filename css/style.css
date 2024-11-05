@@ -28,6 +28,13 @@ body {
     margin-bottom: 50px;
 }
 
+.right {
+    max-height: 400px;
+    width: 550px;
+    padding: 20px 5px;
+    overflow-y: scroll;
+}
+
 .pink-text {
     font-size: 32px;
     color: rgb(243, 183, 115);
@@ -177,4 +184,20 @@ body {
         transform: translateY(-65px);
         opacity: 0;
     }
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
