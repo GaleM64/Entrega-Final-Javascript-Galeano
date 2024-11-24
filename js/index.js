@@ -9,6 +9,9 @@ let tpc = 1;
 
 let tps = 0;
 
+const mdf = new Audio("/assets/audio/bgm.mp3")
+mdf.volume = 0.2
+
 const upgrades = [
     {
         name: "clicker",
@@ -66,6 +69,9 @@ const tortaclick = document.getElementById("tortaclick");
 tortaclick.addEventListener("click", aumentartortaf );
 
 function aumentartortaf(event) {
+    const sonidoClick = new Audio("/assets/audio/click.wav")
+    sonidoClick.play()
+
     torta.innerHTML =  Math.round(parsedTorta += tpc);
 
     const x = event.offsetX
@@ -88,11 +94,16 @@ const timeout = (div) => {
 }
 
 function comprarMejora(upgrade) {
+
     const mu = upgrades.find((u) => {
         if (u.name === upgrade) return u
     })
 
     if (parsedTorta >= mu.parsedCost) {
+        const sonidoMejora = new Audio("/assets/audio/upgrade.mp3")
+        sonidoMejora.volume = 0.3
+        sonidoMejora.play()
+
         torta.innerHTML = Math.round(parsedTorta -= mu.parsedCost);
 
         mu.level.innerHTML ++
@@ -102,6 +113,7 @@ function comprarMejora(upgrade) {
 
         mu.parsedCost *= mu.costMultiplier;
         mu.cost.innerHTML = Math.round(mu.parsedCost)
+        
         if (mu.name ==='clicker') {
             tpc += mu.parsedIncrease
         } else {
@@ -159,5 +171,6 @@ setInterval (() => {
     parsedTorta += tps / 10
     torta.innerHTML = Math.round(parsedTorta)
     tpcText.innerHTML = Math.round(tpc)
-    tpsText.innerHTML = Math.round(tps)
+    tpsText.innerHTML = Math.round(tps);
+    mdf.play()
 }, 100)
