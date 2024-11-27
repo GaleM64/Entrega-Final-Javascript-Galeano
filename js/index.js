@@ -1,3 +1,4 @@
+import { forNum } from "../constants/formato.js";
 import { intervalos, upgrades } from "../constants/mejoras.js";
 import { valoresporDefecto } from "../constants/valoresDefecto.js";
 
@@ -9,13 +10,14 @@ let tpsText = document.getElementById("tps-text")
 
 let tortaImgContainer = document.querySelector(".torta-img-container")
 
-let botonNavMejoras = document.getElementById("upgrade-nav-button")
-let botonNavHabilidades = document.getElementById("skills-nav-button")
-let botonNavArtefacto = document.getElementById("artifacts-nav-button")
-
 let botonPrestigio = document.querySelector(".prestige-button")
 
 let reliquia = document.getElementById('reliquia')
+
+let popupform = document.getElementById("miModal");
+let closepopup = document.getElementsByClassName("close")[0];
+
+let form = document.getElementById("formID");
 
 let tpc = 1;
 let tps = 0;
@@ -31,7 +33,7 @@ function aumentartortaf(event) {
     const sonidoClick = new Audio("./assets/audio/click.wav")
     sonidoClick.play()
 
-    torta.innerHTML =  Math.round(parsedTorta += tpc);
+    torta.innerHTML =  forNum(parsedTorta += tpc);
 
     const x = event.offsetX
     const y = event.offsetY
@@ -68,7 +70,7 @@ function comprarMejora(upgrade) {
         sonidoMejora.volume = 0.3
         sonidoMejora.play()
 
-        torta.innerHTML = Math.round(parsedTorta -= mu.parsedCost);
+        torta.innerHTML = forNum(parsedTorta -= mu.parsedCost);
 
         let index = intervalos.indexOf(parseFloat(mu.level.innerHTML))
 
@@ -113,6 +115,42 @@ function comprarMejora(upgrade) {
             tps += mu.poder
         }
     }
+}
+
+//Funcion de prestigio//
+const btnP = document.querySelector("#prestigio");
+
+btnP.addEventListener("click", prestigio);
+
+function prestigio() {
+    upgrades.map((upgrade) => {
+        const mu = valoresporDefecto.find((u) => { if (upgrade.nombre === u.nombre) return u })
+        
+        upgrade.parsedCost = mu.costo
+        upgrade.parsedIncrease = mu.aumento
+
+        upgrade.level.innerHTML = 0
+        upgrade.costo.innerHTML = mu.costo
+        upgrade.aumento.innerHTML = mu.aumento
+
+        const divMejora = document.getElementById(`${mu.nombre}-upgrade`)
+        const divproxlvl = document.getElementById(`${mu.nombre}-next-level`)
+        const divlvlP = document.getElementById(`${mu.nombre}-next-p`)
+
+        divMejora.style.cssText = `border-color: white`;
+        divproxlvl.style.cssText = `background-color: #5A5959; font-weight: normal`;
+        divlvlP.innerHTML = `+${mu.aumento} tortas por click`
+    })
+    reliquia.innerHTML = Math.ceil(Math.sqrt(parsedTorta - 999999) / 300)
+
+    if (reliquia.innerHTML >= 1 ) {
+        popupform.style.display = "block";
+    }
+
+    tpc = 1
+    tps = 0
+    parsedTorta = 0
+    torta.innerHTML = parsedTorta
 }
 
 //Funcion de Guardar Partida//
@@ -162,41 +200,9 @@ btnC.addEventListener("click", load);
         torta.innerHTML = Math.round(parsedTorta)
 }
 
-//Funcion de prestigio//
-const btnP = document.querySelector("#prestigio");
-
-btnP.addEventListener("click", prestigio);
-
-function prestigio() {
-    upgrades.map((upgrade) => {
-        const mu = valoresporDefecto.find((u) => { if (upgrade.nombre === u.nombre) return u })
-        
-        upgrade.parsedCost = mu.costo
-        upgrade.parsedIncrease = mu.aumento
-
-        upgrade.level.innerHTML = 0
-        upgrade.costo.innerHTML = mu.costo
-        upgrade.aumento.innerHTML = mu.aumento
-
-        const divMejora = document.getElementById(`${mu.nombre}-upgrade`)
-        const divproxlvl = document.getElementById(`${mu.nombre}-next-level`)
-        const divlvlP = document.getElementById(`${mu.nombre}-next-p`)
-
-        divMejora.style.cssText = `border-color: white`;
-        divproxlvl.style.cssText = `background-color: #5A5959; font-weight: normal`;
-        divlvlP.innerHTML = `+${mu.aumento} tortas por click`
-    })
-    reliquia.innerHTML = Math.ceil(Math.sqrt(parsedTorta - 999999) / 300)
-
-    tpc = 1
-    tps = 0
-    parsedTorta = 0
-    torta.innerHTML = parsedTorta
-}
-
 setInterval (() => {
     parsedTorta += tps / 10
-    torta.innerHTML = Math.round(parsedTorta)
+    torta.innerHTML = forNum(parsedTorta)
     tpcText.innerHTML = Math.round(tpc)
     tpsText.innerHTML = Math.round(tps);
     mdf.play()
@@ -208,33 +214,23 @@ setInterval (() => {
     }
 }, 100)
 
-//Botones de Navegación//
-botonNavHabilidades.addEventListener("click", function() {
-    const contMejoras = document.querySelectorAll(".upgrade")
+//Modal de formulario//
 
-    contMejoras.forEach((container) => {
-        if (container.classList.contains('type-habilidad')) container.style.display = "flex"
-        else container.style.display = "none"
-    })
-})
+function submitForm(event) {
+    event.preventDefault();
+    popupform.style.display = "none";
+}
+form.addEventListener('submit', submitForm);
 
-botonNavMejoras.addEventListener("click", function() {
-    const contMejoras = document.querySelectorAll(".upgrade")
+closepopup.onclick = function() {
+popupform.style.display = "none";
+}
 
-    contMejoras.forEach((container) => {
-        if (container.classList.contains('type-mejora')) container.style.display = "flex"
-        else container.style.display = "none"
-    })
-})
-
-botonNavArtefacto.addEventListener("click", function() {
-    const contMejoras = document.querySelectorAll(".upgrade")
-
-    contMejoras.forEach((container) => {
-        if (container.classList.contains('type-artefacto')) container.style.display = "flex"
-        else container.style.display = "none"
-    })
-})
+window.onclick = function(event) {
+if (event.target == popupform) {
+    popupform.style.display = "none";
+    }
+}
 
 window.aumentartortaf = aumentartortaf
 window.comprarMejora = comprarMejora

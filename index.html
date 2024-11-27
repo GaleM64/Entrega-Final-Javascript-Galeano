@@ -19,6 +19,7 @@
                 </div>
             </div>
 
+            <!-- Plantilla para crear las mejoras en base al archivo valoresDefecto.js -->
             <script id="plantilla-mejora" type="text/template">
                 <div class="upgrade type-{{type}}" onclick="comprarMejora('{{nombre}}')" id="{{nombre}}-upgrade">
                     <div class="left-section">
@@ -44,9 +45,7 @@
 
             <div class="right">
                 <div class="right-navbar">
-                    <div id="upgrade-nav-button">Mejora</div>
-                    <div id="skills-nav-button">Habilidades</div>
-                    <div id="artifacts-nav-button">Artefactos</div>
+                    <div id="upgrade-nav-button">Mejoras</div>
                 </div>
 
                 <div id="contenedor-mejoras"></div>
@@ -55,28 +54,41 @@
 
         <div class="statistics">
             <div class="texts">
-                <p>TPC: <span id="tpc-text" class="orange-text">1</span></p>
-                <p>TPS: <span id="tps-text" class="orange-text">0</span></p>
+                <p>TPC: <span id="tpc-text" class="orange-text">1</span></p> <!-- Tortas por click -->
+                <p>TPS: <span id="tps-text" class="orange-text">0</span></p> <!-- Tortas por segundo -->
             </div>
         </div>
 
         <div class="util-buttons">
-            <button class="util-button prestige-button" id="prestigio">
+            <button class="util-button prestige-button" id="prestigio"> <!-- Prestigio reinicia el progreso a cambio de una reliquia -->
                 Prestigio
             </button>
-            <button class="util-button" id="guardar">
+            <button class="util-button" id="guardar"> <!-- Guardar partida -->
                 Guardar
             </button>
-            <button class="util-button" id="cargar">
+            <button class="util-button" id="cargar"> <!-- Cargar partida -->
                 Cargar
             </button>
         </div>
 
         <div class="reliquia">
-            Reliquia: <span id="reliquia">0</span>
+            Reliquia: <span id="reliquia">0</span> <!-- Contador de reliquias conseguidas -->
         </div>
-        <div class="oculto"> Consigue 50 reliquias usando el boton de prestigio para participar en un sorteo</div>
+        <div class="oculto"> Consigue una reliquia usando el boton de prestigio para participar en un sorteo</div>
     </section>
-
+    <div id="miModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <br>
+            <p> Complete el siguiente formulario para participar por un año de harina La Morenita gratis.</p>
+            <form class="form-container" id="formID">
+                    <label class="form-label" for="name"> Nombre: </label>
+                    <input class="form-input" type="text" placeholder="Escriba su nombre" id="name" name="name" required>
+                    <label class="form-label" for="email"> Email: </label>
+                    <input class="form-input" type="email" placeholder="Escriba su Email" id="email" name="email" required>
+                    <button class="btn-submit" type="submit"> Enviar </button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
