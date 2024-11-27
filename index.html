@@ -5,134 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tortas Fritas Clicker</title>
     <link rel="stylesheet" href="./css/style.css">
-    <script defer src="./js/index.js"></script>
+    <script defer src="./js/index.js" type="module"></script>
+    <script type="module" src="constants/habilidades.js"></script>
+    <script type="module" src="constants/artefactos.js"></script>
 </head>
 <body>
     <section>
         <div class="main">
             <div class="left">
-                <p>Tortas Fritas: <br><span class="torta-cost pink-text"> 0 </span></p>
+                <p>Tortas Fritas: <br><span class="torta-cost orange-text">1000000</span></p>
                 <div class="torta-img-container">
-                    <img src="./img/tortafrita.png" class="tfimage" id="tortaclick" draggable="false">
+                    <img src="./assets/tortafrita.png" class="tfimage" id="tortaclick" draggable="false">
                 </div>
             </div>
 
+            <script id="plantilla-mejora" type="text/template">
+                <div class="upgrade type-{{type}}" onclick="comprarMejora('{{nombre}}')" id="{{nombre}}-upgrade">
+                    <div class="left-section">
+                        <img src="{{imagen}}" class="upgrade-img">
+                    </div>
+                    <div class="mid-section">
+                        <h4> {{nombre}} </h4>
+                        <div class="cost-info">
+                            <p class="cost-text"> Costo: <span class="{{nombre}}-cost">{{costo}}</span></p>
+                            <img src="./assets/tortafrita.png" class="torta-img">
+                        </div>
+                    </div>
+                    <div class="right-section">
+                        Nivel <span class="{{nombre}}-level">0</span>
+                    </div>
+                    <div class="next-level-info" id="{{nombre}}-next-level">
+                        <p id="{{nombre}}-next-p">
+                            +<span class="{{nombre}}-increase">{{aumento}}</span> tortas <br> por click
+                        </p>
+                    </div>
+                </div>
+            </script>
+
             <div class="right">
-                <div class="upgrade" onclick="comprarMejora('clicker')">
-                    <div class="left-section">
-                        <img src="./img/clicker-white.png" class="upgrade-img">
-                    </div>
-                    <div class="mid-section">
-                        <h4> Clicker </h4>
-                        <div class="cost-info">
-                            <p class="cost-text"> Costo: <span class="clicker-cost">10</span></p>
-                            <img src="./img/tortafrita.png" class="torta-img">
-                        </div>
-                    </div>
-                    <div class="right-section">
-                        Nivel <span class="clicker-level">0</span>
-                    </div>
-                    <div class="next-level-info">
-                        <p>
-                            +<span class="clicker-increase">1</span> tortas <br> por click
-                        </p>
-                    </div>
+                <div class="right-navbar">
+                    <div id="upgrade-nav-button">Mejora</div>
+                    <div id="skills-nav-button">Habilidades</div>
+                    <div id="artifacts-nav-button">Artefactos</div>
                 </div>
 
-                <div class="upgrade" onclick="comprarMejora('pamasar')">
-                    <div class="left-section">
-                        <img src="./img/pamasar.png" class="upgrade-img">
-                    </div>
-                    <div class="mid-section">
-                        <h4> Palo de amasar </h4>
-                        <div class="cost-info">
-                            <p class="cost-text"> Costo: <span class="pamasar-cost">130</span></p>
-                            <img src="./img/tortafrita.png" class="torta-img">
-                        </div>
-                    </div>
-                    <div class="right-section">
-                        Nivel <span class="pamasar-level">0</span>
-                    </div>
-                    <div class="next-level-info">
-                        <p>
-                            +<span class="pamasar-increase">4</span> tortas <br> por segundo
-                        </p>
-                    </div>
-                </div>
-
-                <div class="upgrade" onclick="comprarMejora('panadero')">
-                    <div class="left-section">
-                        <img src="./img/panadero.png" class="upgrade-img">
-                    </div>
-                    <div class="mid-section">
-                        <h4> Panadero </h4>
-                        <div class="cost-info">
-                            <p class="cost-text"> Costo: <span class="panadero-cost">850</span></p>
-                            <img src="./img/tortafrita.png" class="torta-img">
-                        </div>
-                    </div>
-                    <div class="right-section">
-                        Nivel <span class="panadero-level">0</span>
-                    </div>
-                    <div class="next-level-info">
-                        <p>
-                            +<span class="panadero-increase">24</span> tortas <br> por segundo
-                        </p>
-                    </div>
-                </div>
-
-                <div class="upgrade" onclick="comprarMejora('panaderia')">
-                    <div class="left-section">
-                        <img src="./img/panaderia.png" class="upgrade-img">
-                    </div>
-                    <div class="mid-section">
-                        <h4> Panadería </h4>
-                        <div class="cost-info">
-                            <p class="cost-text"> Costo: <span class="panaderia-cost">4750</span></p>
-                            <img src="./img/tortafrita.png" class="torta-img">
-                        </div>
-                    </div>
-                    <div class="right-section">
-                        Nivel <span class="panaderia-level">0</span>
-                    </div>
-                    <div class="next-level-info">
-                        <p>
-                            +<span class="panaderia-increase">82</span> tortas <br> por segundo
-                        </p>
-                    </div>
-                </div>
-
-                <div class="upgrade" onclick="comprarMejora('festival')">
-                    <div class="left-section">
-                        <img src="./img/festival.png" class="upgrade-img">
-                    </div>
-                    <div class="mid-section">
-                        <h4> Festival </h4>
-                        <div class="cost-info">
-                            <p class="cost-text"> Costo: <span class="festival-cost">23105</span></p>
-                            <img src="./img/tortafrita.png" class="torta-img">
-                        </div>
-                    </div>
-                    <div class="right-section">
-                        Nivel <span class="festival-level">0</span>
-                    </div>
-                    <div class="next-level-info">
-                        <p>
-                            +<span class="festival-increase">422</span> tortas <br> por segundo
-                        </p>
-                    </div>
-                </div>
+                <div id="contenedor-mejoras"></div>
             </div>
         </div>
 
         <div class="statistics">
             <div class="texts">
-                <p>TPC: <span id="tpc-text" class="pink-text">1</span></p>
-                <p>TPS: <span id="tps-text" class="pink-text">0</span></p>
+                <p>TPC: <span id="tpc-text" class="orange-text">1</span></p>
+                <p>TPS: <span id="tps-text" class="orange-text">0</span></p>
             </div>
         </div>
 
         <div class="util-buttons">
+            <button class="util-button prestige-button" id="prestigio">
+                Prestigio
+            </button>
             <button class="util-button" id="guardar">
                 Guardar
             </button>
@@ -140,8 +71,11 @@
                 Cargar
             </button>
         </div>
-    </section>
 
+        <div class="reliquia">
+            Reliquia: <span id="reliquia">0</span>
+        </div>
+    </section>
 
 </body>
 </html>

@@ -20,6 +20,7 @@ body {
 .main {
     display: flex;
     gap: 200px;
+    margin-bottom: 100px;
 }
 
 .left {
@@ -28,14 +29,44 @@ body {
     margin-bottom: 50px;
 }
 
-.right {
-    max-height: 400px;
-    width: 550px;
-    padding: 20px 5px;
-    overflow-y: scroll;
+.right-navbar {
+    display: flex;
+    font-weight: bold;
 }
 
-.pink-text {
+.right-navbar>div {
+    width: 140px;
+    height: 40px;
+    background-color: rgb(94, 26, 121);
+    text-align: center;
+    padding-top: 15px;
+}
+
+.right-navbar>div:hover {
+    opacity: 0.85;
+    cursor: pointer;
+}
+
+.right-navbar>:first-child {
+    background: rgb(190, 62, 62);
+}
+
+.right-navbar>:nth-child(2) {
+    background: rgb(31, 75, 104);
+}
+
+#contenedor-mejoras {
+    max-height: 400px;
+    width: 550px;
+    padding: 20px;
+    overflow-y: scroll;
+    border: 2px rgb(150, 150, 150) solid;
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px rgb(140, 140, 140);
+    position: relative;
+}
+
+.orange-text {
     font-size: 32px;
     color: rgb(243, 183, 115);
     font-weight: 700;
@@ -75,6 +106,14 @@ body {
     cursor: pointer;
 }
 
+.type-habilidad {
+    display: none;
+}
+
+.type-artefacto {
+    display: none;
+}
+
 .mid-section h4 {
     margin-bottom: 5px;
     font-size: 20px;
@@ -108,6 +147,8 @@ body {
     width: 100px;
     text-align: center;
     display: none;
+    font-size: 15px;
+    border-radius: 2px;
 }
 
 .upgrade:hover .next-level-info {
@@ -153,6 +194,15 @@ body {
 .util-button:hover {
     opacity: 0.7;
     cursor: pointer;
+}
+
+.reliquia {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .fade-up {
