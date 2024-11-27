@@ -20,7 +20,7 @@ let reliquia = document.getElementById('reliquia')
 let tpc = 1;
 let tps = 0;
 
-const mdf = new Audio("/assets/audio/bgm.mp3")
+const mdf = new Audio("./assets/audio/bgm.mp3")
 mdf.volume = 0.2
 
 const tortaclick = document.getElementById("tortaclick");
@@ -28,7 +28,7 @@ tortaclick.addEventListener("click", aumentartortaf );
 
 //Funcion de sumar tortas al clickear//
 function aumentartortaf(event) {
-    const sonidoClick = new Audio("/assets/audio/click.wav")
+    const sonidoClick = new Audio("./assets/audio/click.wav")
     sonidoClick.play()
 
     torta.innerHTML =  Math.round(parsedTorta += tpc);
@@ -64,7 +64,7 @@ function comprarMejora(upgrade) {
     const divlvlP = document.getElementById(`${mu.nombre}-next-p`)
 
     if (parsedTorta >= mu.parsedCost) {
-        const sonidoMejora = new Audio("/assets/audio/upgrade.mp3")
+        const sonidoMejora = new Audio("./assets/audio/upgrade.mp3")
         sonidoMejora.volume = 0.3
         sonidoMejora.play()
 
@@ -95,7 +95,7 @@ function comprarMejora(upgrade) {
         if ( index !== -1 ) {
             divMejora.style.cssText = `border-color: orange`;
             divproxlvl.style.cssText = `background-color: #CC4500; font-weight: bold`;
-            divlvlP.innerText = mu.potenciadores[index].description
+            divlvlP.innerText = mu.potenciadores[index].descripcion
 
             mu.costo.innerHTML = Math.round(mu.parsedCost *2.5 * 1.004 ** parseFloat(mu.level.innerHTML))
         } else {

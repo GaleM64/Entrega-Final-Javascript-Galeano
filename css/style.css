@@ -204,6 +204,20 @@ body {
     font-size: 20px;
     font-weight: 600;
 }
+.oculto {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.reliquia:hover + .oculto {
+    display: block;
+    color: rgb(243, 183, 115);
+}
 
 .fade-up {
     animation: fade-up 1s;
