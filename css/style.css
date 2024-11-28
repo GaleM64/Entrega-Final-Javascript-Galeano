@@ -37,7 +37,6 @@ body {
 .right-navbar>div {
     width: 140px;
     height: 40px;
-    background-color: rgb(94, 26, 121);
     text-align: center;
     padding-top: 15px;
 }
@@ -49,10 +48,6 @@ body {
 
 .right-navbar>:first-child {
     background: rgb(190, 62, 62);
-}
-
-.right-navbar>:nth-child(2) {
-    background: rgb(31, 75, 104);
 }
 
 #contenedor-mejoras {
@@ -104,14 +99,6 @@ body {
     position: relative;
     margin-bottom: 20px;
     cursor: pointer;
-}
-
-.type-habilidad {
-    display: none;
-}
-
-.type-artefacto {
-    display: none;
 }
 
 .mid-section h4 {
@@ -291,8 +278,6 @@ body {
 .btn-submit:hover {
     background-color: #b6632c;
 }
-
-
 
 .fade-up {
     animation: fade-up 1s;

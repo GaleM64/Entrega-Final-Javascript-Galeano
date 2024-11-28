@@ -117,42 +117,6 @@ function comprarMejora(upgrade) {
     }
 }
 
-//Funcion de prestigio//
-const btnP = document.querySelector("#prestigio");
-
-btnP.addEventListener("click", prestigio);
-
-function prestigio() {
-    upgrades.map((upgrade) => {
-        const mu = valoresporDefecto.find((u) => { if (upgrade.nombre === u.nombre) return u })
-        
-        upgrade.parsedCost = mu.costo
-        upgrade.parsedIncrease = mu.aumento
-
-        upgrade.level.innerHTML = 0
-        upgrade.costo.innerHTML = mu.costo
-        upgrade.aumento.innerHTML = mu.aumento
-
-        const divMejora = document.getElementById(`${mu.nombre}-upgrade`)
-        const divproxlvl = document.getElementById(`${mu.nombre}-next-level`)
-        const divlvlP = document.getElementById(`${mu.nombre}-next-p`)
-
-        divMejora.style.cssText = `border-color: white`;
-        divproxlvl.style.cssText = `background-color: #5A5959; font-weight: normal`;
-        divlvlP.innerHTML = `+${mu.aumento} tortas por click`
-    })
-    reliquia.innerHTML = Math.ceil(Math.sqrt(parsedTorta - 999999) / 300)
-
-    if (reliquia.innerHTML >= 1 ) {
-        popupform.style.display = "block";
-    }
-
-    tpc = 1
-    tps = 0
-    parsedTorta = 0
-    torta.innerHTML = parsedTorta
-}
-
 //Funcion de Guardar Partida//
 const btnG = document.querySelector("#guardar");
 
@@ -190,7 +154,7 @@ btnC.addEventListener("click", load);
     
             upgrade.level.innerHTML = savedValues.parsedLevel
             upgrade.costo.innerHTML = Math.round(upgrade.parsedCost)
-            upgrade.increase.innerHTML = upgrade.parsedIncrease
+            upgrade.aumento.innerHTML = upgrade.parsedIncrease
         })
     
         tpc = JSON.parse(localStorage.getItem('tpc'))
@@ -198,6 +162,43 @@ btnC.addEventListener("click", load);
         parsedTorta = JSON.parse(localStorage.getItem('tortas'))
     
         torta.innerHTML = Math.round(parsedTorta)
+}
+
+
+//Funcion de prestigio//
+const btnP = document.querySelector("#prestigio");
+
+btnP.addEventListener("click", prestigio);
+
+function prestigio() {
+    upgrades.map((upgrade) => {
+        const mu = valoresporDefecto.find((u) => { if (upgrade.nombre === u.nombre) return u })
+        
+        upgrade.parsedCost = mu.costo
+        upgrade.parsedIncrease = mu.aumento
+
+        upgrade.level.innerHTML = 0
+        upgrade.costo.innerHTML = mu.costo
+        upgrade.aumento.innerHTML = mu.aumento
+
+        const divMejora = document.getElementById(`${mu.nombre}-upgrade`)
+        const divproxlvl = document.getElementById(`${mu.nombre}-next-level`)
+        const divlvlP = document.getElementById(`${mu.nombre}-next-p`)
+
+        divMejora.style.cssText = `border-color: white`;
+        divproxlvl.style.cssText = `background-color: #5A5959; font-weight: normal`;
+        divlvlP.innerHTML = `+${mu.aumento} tortas por click`
+    })
+    reliquia.innerHTML = Math.ceil(Math.sqrt(parsedTorta - 999999) / 300)
+
+    if (reliquia.innerHTML >= 1 ) {
+        popupform.style.display = "block";
+    }
+
+    tpc = 1
+    tps = 0
+    parsedTorta = 0
+    torta.innerHTML = parsedTorta
 }
 
 setInterval (() => {
