@@ -30,6 +30,12 @@ mdf.volume = 0.2
 const tortaclick = document.getElementById("tortaclick");
 tortaclick.addEventListener("click", aumentartortaf );
 
+Swal.fire({
+    title: "Bienvenid@ a Torta Frita Clicker",
+    html: "Un juego muy simple que podes jugar si no tenes otra cosa o tenerlo de fondo mientras estas haciendo algo mas.<br> Patrocinado por La Morenita quien te ofrece participar por un premio si llegas al millon de tortas fritas y usas el boton de prestigio para reiniciar tu progreso",
+    icon: "info",
+});
+
 //Funcion de sumar tortas al clickear//
 function aumentartortaf(event) {
     const sonidoClick = new Audio("./assets/audio/click.wav")
@@ -222,6 +228,14 @@ setInterval (() => {
 function submitForm(event) {
     event.preventDefault();
     popupform.style.display = "none";
+    Swal.fire({
+        title: "Datos Enviados",
+        text: "Muchas gracias por participar, eres libre de seguir jugando si lo deseas( o puedes irte a comer unas tortas fritas )",
+        icon: "success",
+        customClass: {
+            confirmButton: 'custom-alert',
+        },
+    });
 }
 form.addEventListener('submit', submitForm);
 
