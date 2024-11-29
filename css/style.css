@@ -226,6 +226,10 @@ body {
     width: 50dvw;
 }
 
+.modal-content p {
+    font-size: 20px;
+}
+
 .close {
     color: #aaa;
     float: right;
@@ -248,7 +252,7 @@ body {
 .form-label {
     margin-bottom: 10px;
     font-size: 16px;
-    color: #444;
+    color: #ffffff;
     text-align: left;
 }
 
@@ -260,6 +264,14 @@ body {
     font-size: 16px;
     width: 100%;
     box-sizing: border-box;
+}
+
+.tableFormat, td {
+    font-size: 20px;
+    text-align: center;
+    border-style: double;
+    border-color: #b6632c;
+
 }
 
 .btn-submit {

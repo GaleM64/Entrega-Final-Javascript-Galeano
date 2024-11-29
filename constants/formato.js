@@ -1,3 +1,5 @@
+//Abreviacion de los numeros grandes//
+
 export function forNum(num) {
 
     if (num < 1000) return Math.round(num)

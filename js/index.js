@@ -17,6 +17,8 @@ let reliquia = document.getElementById('reliquia')
 let popupform = document.getElementById("miModal");
 let closepopup = document.getElementsByClassName("close")[0];
 
+let popupTable = document.getElementById("table")
+
 let form = document.getElementById("formID");
 
 let tpc = 1;
@@ -166,9 +168,9 @@ btnC.addEventListener("click", load);
 
 
 //Funcion de prestigio//
-const btnP = document.querySelector("#prestigio");
+const btnPres = document.querySelector("#prestigio");
 
-btnP.addEventListener("click", prestigio);
+btnPres.addEventListener("click", prestigio);
 
 function prestigio() {
     upgrades.map((upgrade) => {
@@ -232,6 +234,73 @@ if (event.target == popupform) {
     popupform.style.display = "none";
     }
 }
+
+//Guardado de datos array en string json//
+
+const btnS = document.getElementById("guardar-datos");
+
+btnS.addEventListener("click", guardarDatos);
+
+function guardarDatos() {
+
+    const datosArray = [];
+    
+    let inputNombre = document.getElementById("name");
+    let inputEmail = document.getElementById("email");
+    let inputNumero = document.getElementById("number");
+
+    let iVAL1 = inputNombre.value;
+    let iVAL2 = inputEmail.value;
+    let iVAL3 = inputNumero.value;
+    
+    datosArray.push(iVAL1, iVAL2, iVAL3);
+    
+    let inputDataJSON = JSON.stringify(datosArray);
+console.log(inputDataJSON);
+}
+
+//Modal de tabla de participantes//
+function displayTable() {
+    popupTable.style.display = "block"
+}
+
+const btnPart = document.getElementById("participantes");
+
+btnPart.addEventListener("click", displayTable)
+
+closepopup.onclick = function() {
+popupTable.style.display = "none";
+}
+
+window.onclick = function(event) {
+if (event.target == popupTable) {
+    popupTable.style.display = "none";
+    }
+}
+
+//Fetch de datos del archivos json//
+    fetch("/participantes.json")
+        .then(function(response){
+            return response.json();
+        })
+        .then(function(datos){
+            let displayData = document.querySelector("#fetched-data");
+            let out = "";
+            for (let dato of datos){
+                out += `
+                    <tr>
+                        <td>${dato.name}</td>
+                        <td>${dato.number}</td>
+                    </tr>
+                `;
+            }
+
+            displayData.innerHTML = out;
+        })
+
+
+
+
 
 window.aumentartortaf = aumentartortaf
 window.comprarMejora = comprarMejora

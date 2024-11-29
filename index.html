@@ -67,26 +67,48 @@
             <button class="util-button" id="cargar"> <!-- Cargar partida -->
                 Cargar
             </button>
+            <button class="util-button" id="participantes"> 
+                Participantes
+            </button>
         </div>
 
         <div class="reliquia">
             Reliquia: <span id="reliquia">0</span> <!-- Contador de reliquias conseguidas -->
         </div>
         <div class="oculto"> Consigue una reliquia usando el boton de prestigio para participar en un sorteo</div>
+
     </section>
+
     <div id="miModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <br>
             <p> Complete el siguiente formulario para participar por un año de harina La Morenita gratis.</p>
+            <br>
             <form class="form-container" id="formID">
                     <label class="form-label" for="name"> Nombre: </label>
                     <input class="form-input" type="text" placeholder="Escriba su nombre" id="name" name="name" required>
                     <label class="form-label" for="email"> Email: </label>
                     <input class="form-input" type="email" placeholder="Escriba su Email" id="email" name="email" required>
-                    <button class="btn-submit" type="submit"> Enviar </button>
+                    <label class="form-label" for="number"> Numero del 1 al 100: </label>
+                    <input class="form-input" type="number" id="number"  min="1" max="100" />
+                    <button class="btn-submit" type="submit" id="guardar-datos"> Enviar </button>
             </form>
         </div>
+    </div>
+
+    <div id="table" class="modal">
+        <table class="modal-content">
+            <thead>
+                <tr>
+                    <th class="tableFormat"> Nombre </th>
+                    <th class="tableFormat"> Numero </th>
+                </tr>
+            </thead>
+            <tbody id="fetched-data">
+
+            </tbody>
+        </table>
     </div>
 </body>
 </html>
