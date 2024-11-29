@@ -293,7 +293,7 @@ if (event.target == popupTable) {
 }
 
 //Fetch de datos del archivos json//
-    fetch("/participantes.json")
+    fetch("https://raw.githubusercontent.com/GaleM64/Entrega-Final-Javascript-Galeano/refs/heads/main/participantes.json")
         .then(function(response){
             return response.json();
         })
