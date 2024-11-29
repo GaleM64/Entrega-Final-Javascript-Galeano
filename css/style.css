@@ -20,6 +20,7 @@ body {
 .main {
     display: flex;
     gap: 200px;
+    margin-bottom: 100px;
 }
 
 .left {
@@ -28,14 +29,39 @@ body {
     margin-bottom: 50px;
 }
 
-.right {
-    max-height: 400px;
-    width: 550px;
-    padding: 20px 5px;
-    overflow-y: scroll;
+.right-navbar {
+    display: flex;
+    font-weight: bold;
 }
 
-.pink-text {
+.right-navbar>div {
+    width: 140px;
+    height: 40px;
+    text-align: center;
+    padding-top: 15px;
+}
+
+.right-navbar>div:hover {
+    opacity: 0.85;
+    cursor: pointer;
+}
+
+.right-navbar>:first-child {
+    background: rgb(190, 62, 62);
+}
+
+#contenedor-mejoras {
+    max-height: 400px;
+    width: 550px;
+    padding: 20px;
+    overflow-y: scroll;
+    border: 2px rgb(150, 150, 150) solid;
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px rgb(140, 140, 140);
+    position: relative;
+}
+
+.orange-text {
     font-size: 32px;
     color: rgb(243, 183, 115);
     font-weight: 700;
@@ -104,10 +130,12 @@ body {
     position: absolute;
     right: -105px;
     background-color: rgb(66, 66, 66);
-    height: 40px;
+    height: auto;
     width: 100px;
     text-align: center;
     display: none;
+    font-size: 15px;
+    border-radius: 2px;
 }
 
 .upgrade:hover .next-level-info {
@@ -153,6 +181,114 @@ body {
 .util-button:hover {
     opacity: 0.7;
     cursor: pointer;
+}
+
+.reliquia {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    font-weight: 600;
+}
+.oculto {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.reliquia:hover + .oculto {
+    display: block;
+    color: rgb(243, 183, 115);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #01386bb4;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50dvw;
+}
+
+.modal-content p {
+    font-size: 20px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #ffffff;
+    text-align: left;
+}
+
+.form-input {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.tableFormat, td {
+    font-size: 20px;
+    text-align: center;
+    border-style: double;
+    border-color: #b6632c;
+
+}
+
+.btn-submit {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-submit {
+    background-color: #803a00;
+    color: #fff;
+}
+
+.btn-submit:hover {
+    background-color: #b6632c;
 }
 
 .fade-up {

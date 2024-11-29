@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Sara",
+    "email": "castillosara@outlook.es",
+    "number": 67
+  },
+  {
+    "name": "Manuel",
+    "email": "Manuelyames@gmail.com",
+    "number": 42
+  },
+  {
+    "name": "Aurora",
+    "email": "GuzAurora@gmail.com",
+    "number": 3
+  },
+  {
+    "name": "Ricardo",
+    "email": "RojasRick@outlook.es",
+    "number": 84
+  },
+  {
+    "name": "Pepe",
+    "email": "elpepillo@myemail.com",
+    "number": 16
+  },
+  {
+    "name": "Armando",
+    "email": "TorresArmando@gmail.com",
+    "number": 12
+  },
+  {
+    "name": "Javier",
+    "email": "Javier65@gmail.com",
+    "number": 65
+  }
+]
